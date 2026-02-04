@@ -1,13 +1,24 @@
 spring:
     application:
-          name: board 6 # ???? ??
-    datasource: # ?????? ????
-          url: jdbc:mysql://localhost:3306/board
+          name: board 6
+    datasource:
+          url: jdbc:log4jdbc:mysql://localhost:3306/board
           username: root
           password: green502
+          driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
 
-mybatis: # Mybatis ??
-            mapper-locations: mappers/**/*.xml # xml?? ?? /  mappers?? ???/?? ?????? ???? / .xml? ??? ?? ??
+logging:
+    level:
+        jdbc:
+            sqlonly: info
+            sqltiming: off
+            audit: off
+            resultsettable: info
+
+mybatis:
+    configuration:
+      map-underscore-to-camel-case: true
+    mapper-locations: mappers/**/*.xml
 
 #server:
-#  port: 8081 ??? ???? ?? ? ?? ?? 5????, ??? port??? ? ? ?? ??? ?????
+#  port: 8081
