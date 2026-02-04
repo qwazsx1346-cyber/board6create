@@ -1,5 +1,6 @@
 package com.green.board6.application;
 
+import com.green.board6.application.model.BoardGetOneRes;
 import com.green.board6.application.model.BoardGetRes;
 import com.green.board6.application.model.BoardPostReq;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,12 @@ public class BoardController {
     public List<BoardGetRes> getBoardList(@RequestParam(name="search_text",required=false) String searchText) {
         log.info("searchText: {}", searchText);
         return boardService.findAll(searchText);
+    }
+
+    @GetMapping("{id}")
+    public BoardGetOneRes getBoard(@PathVariable int id) {
+        log.info("id: {}", id);
+        return boardService.findById(id);
     }
 
 }
